@@ -1,0 +1,143 @@
+main,main_func func_decs
+main_func,MAIN ( ) { code }
+func_decs,func_dec func_decs
+func_decs,
+
+code,code_line code
+code,code_line
+code_line,safe_code_line
+code_line,if_stmt
+// code_line,unless_stmt
+safe_code_line,declaration ;
+safe_code_line,assignment ;
+safe_code_line,return_stmt ;
+safe_code_line,BREAK ;
+// safe_code_line,CONTINUE ;
+safe_code_line,switch_stmt
+safe_code_line,print_stmt ;
+safe_code_line,scan_stmt ;
+safe_code_line,func_call ;
+safe_code_line,loop
+
+print_stmt,print ( expr )
+print_stmt,print ( cond )
+print_stmt,print ( func_call )
+print_stmt,print ( assignment )
+
+scan_stmt,scan ( type )
+
+//
+type,nothing
+type,integer
+type,floating
+type,chara
+type,sinulid
+type,yesno
+type,aray
+
+declaration,type var_list
+var_list,varname &com; var_list
+var_list,assignment &com; var_list
+var_list,varname
+var_list,assignment
+
+assignment,varname = assignment
+assignment,varname = cond
+assignment,varname = expr
+assignment,varname = func_call
+assignment,varname array_index = assignment
+assignment,varname array_index = cond
+assignment,varname array_index = expr
+assignment,varname array_index = func_call
+assign_list,assignment &com; assign_list
+assign_list,assignment
+array_index,[ int ] array_index
+array_index,[ int ]
+
+array,[ array_vals ]
+array_vals,
+array_vals,cond &com; array_vals
+array_vals,expr &com; array_vals
+
+value,int
+value,float
+value,char
+value,array
+value,string
+
+cond,cond || cond2
+cond,cond2
+cond2,cond2 && cond3
+cond2,cond3
+cond3,! cond3
+cond3,cond4
+cond4,expr <= expr
+cond4,expr >= expr
+cond4,expr < expr
+cond4,expr > expr
+cond4,expr == expr
+cond4,expr != expr
+cond4,bool_value
+cond4,( cond )
+
+expr,expr + expr2
+expr,expr - expr2
+expr,expr2
+expr2,expr2 * expr3
+expr2,expr2 / expr3
+expr2,expr2 % expr3
+expr2,expr3
+// expr3,expr4 ^ expr3
+// expr3,expr4
+//check if not 	boolean
+expr3,( assignment )
+expr3,( expr )
+expr3,value
+expr3,varname
+expr3,++ varname
+expr3,-- varname
+expr3,varname ++
+expr3,varname --
+
+code_body,safe_code_line
+code_body,{ code }
+if_stmt,if ( cond ) code_body
+if_stmt,if ( cond ) code_body else code_line
+if_stmt,if ( cond ) code_body else { code }
+// unless_stmt,dontevenblink ( cond ) code_body
+// unless_stmt,dontevenblink ( cond ) code_body else code_line
+// unless_stmt,dontevenblink ( cond ) code_body else { code }
+switch_stmt,switch ( cond ) { switch_body }
+switch_stmt,switch ( expr ) { switch_body }
+switch_body,case_body switch_body
+switch_body,default_body
+case_body,case value : code
+case_body,case bool_value : code
+default_body,default : code
+
+loop,for_loop
+loop,while_loop
+loop,do_while_loop
+// loop,until_loop
+// loop,repeat_until_loop
+for_loop,for ( assign_list ; cond ; assignment ) code_body
+for_loop,for ( type assign_list ; cond ; assignment ) code_body
+for_loop,for ( assign_list ; cond ; expr ) code_body
+for_loop,for ( type assign_list ; cond ; expr ) code_body
+while_loop,while ( cond ) code_body
+do_while_loop,do code_body while ( cond ) ;
+// until_loop,wimey ( cond ) code_body
+// repeat_until_loop,timey code_body wimey ( cond ) ;
+
+return_stmt,return assignment
+return_stmt,return cond
+return_stmt,return expr
+return_stmt,return
+
+func_dec,type varname ( func_params ) { code }
+func_params,type varname &com; func_params
+func_params,type varname
+func_params,type ... varname
+
+func_call,varname ( var_list )
+func_call,varname ( )
