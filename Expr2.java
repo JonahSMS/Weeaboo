@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 
-public class expr2extends NonTerminal {
+public class Expr2 extends NonTerminal {
 	private NonTerminal nonter1;
 	private NonTerminal nonter2;
 	
 	private String operator;
 	private String thisString;
 
-	public Expr(String pattern) {
+	public Expr2(String pattern) {
 		super("expr",pattern);
 	}
 
 	public void interpret() throws Exception {
 		switch(getProdString()) {
 			case "expr2 * expr3":
-				nonter1 = (NonTerminal)getComponent("expr");
+				nonter1 = (NonTerminal)getComponent("expr2");
 				nonter1.interpret();
 				nonter2 = (NonTerminal)getComponent("expr3");
 				nonter2.interpret();
@@ -22,15 +22,15 @@ public class expr2extends NonTerminal {
 				put("lineNo",nonter1.getAsInt("lineNo"));
 				break;
 			case "expr2 / expr3":
-				nonter1 = (NonTerminal)getComponent("expr");
+				nonter1 = (NonTerminal)getComponent("expr2");
 				nonter1.interpret();
 				nonter2 = (NonTerminal)getComponent("expr3");
 				nonter2.interpret();
 				operator = "/";
 				put("lineNo",nonter1.getAsInt("lineNo"));
 				break;
-			case "expr 2 % expr 3":
-				nonter1 = (NonTerminal)getComponent("expr");
+			case "expr2 % expr3":
+				nonter1 = (NonTerminal)getComponent("expr2");
 				nonter1.interpret();
 				nonter2 = (NonTerminal)getComponent("expr3");
 				nonter2.interpret();
@@ -48,6 +48,7 @@ public class expr2extends NonTerminal {
 	}
 
 	public void execute() {
+		boolean error = false;
 		switch(operator) {
 			case "*":
 				nonter1.execute();
@@ -99,13 +100,11 @@ public class expr2extends NonTerminal {
 				put("type",nonter1.getAsString("type"));
 				put("value",nonter1.getAsInt("value"));
 				thisString = "" + getAsInt("value");
-				}
 		}
 	}
 
 	private void updateString() {
 		thisString = "" + getAsInt("value");
-		}
 	}
 
 	public String toString() {

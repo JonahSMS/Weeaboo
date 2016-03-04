@@ -40,6 +40,7 @@ public class Expr extends NonTerminal {
 	}
 
 	public void execute() {
+		boolean error = false;
 		switch(operator) {
 			case "+":
 				nonter1.execute();
@@ -77,12 +78,10 @@ public class Expr extends NonTerminal {
 				put("value",nonter1.getAsInt("value"));
 				thisString = "" + getAsInt("value");
 				}
-		}
 	}
 
 	private void updateString() {
 		thisString = "" + getAsInt("value");
-		}
 	}
 
 	public String toString() {

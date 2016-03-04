@@ -26,7 +26,6 @@ print_stmt,print ( assignment )
 
 scan_stmt,scan ( type )
 
-//
 type,nothing
 type,integer
 type,floating
@@ -104,9 +103,9 @@ code_body,{ code }
 if_stmt,if ( cond ) code_body
 if_stmt,if ( cond ) code_body else code_line
 if_stmt,if ( cond ) code_body else { code }
-// unless_stmt,dontevenblink ( cond ) code_body
-// unless_stmt,dontevenblink ( cond ) code_body else code_line
-// unless_stmt,dontevenblink ( cond ) code_body else { code }
+// unless_stmt,if ( cond ) code_body
+// unless_stmt,if ( cond ) code_body else code_line
+// unless_stmt,if ( cond ) code_body else { code }
 switch_stmt,switch ( cond ) { switch_body }
 switch_stmt,switch ( expr ) { switch_body }
 switch_body,case_body switch_body

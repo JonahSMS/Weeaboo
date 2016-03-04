@@ -31,8 +31,7 @@ public class ConcreteNonTerminalFactory implements NonTerminalFactory {
 				// return new SafeCodeLine(pattern);
 				return null;
 			case "print_stmt":
-				// return new Print(pattern);
-				return null;
+				return new Print(pattern);
 			case "scan_stmt":
 				//return new Scan_stmt(pattern);
 				return null;
@@ -76,14 +75,11 @@ public class ConcreteNonTerminalFactory implements NonTerminalFactory {
 				//return new Cond4(pattern);
 				return null;
 			case "expr":
-				// return new Expr(pattern);
-				return null;
+				return new Expr(pattern);
 			case "expr2":
-				// return new Expr2(pattern);
-				return null;
+				return new Expr2(pattern);
 			case "expr3":
-				// return new Expr3(pattern);
-				return null;
+				return new Expr3(pattern);
 			case "code_body":
 				//return new Code_body(pattern);
 				return null;

@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class expr3 extends NonTerminal {
+public class Expr3 extends NonTerminal {
 	private NonTerminal nonter1;
 	
 	private String thisString;
 
-	public expr3(String pattern) {
+	public Expr3(String pattern) {
 		super("expr3",pattern);
 	}
 
@@ -31,6 +31,7 @@ public class expr3 extends NonTerminal {
 	}
 
 	public void execute() {
+		boolean error = false;
 		switch(getProdString()) {
 			case "+ expr3":
 				nonter1.execute();
@@ -49,13 +50,11 @@ public class expr3 extends NonTerminal {
 				put("type",nonter1.getAsString("type"));
 				put("value",nonter1.getAsInt("value"));
 				thisString = "" + getAsInt("value");
-				}
 		}
 	}
 
 	private void updateString() {
 		thisString = "" + getAsInt("value");
-		}
 	}
 
 	public String toString() {
