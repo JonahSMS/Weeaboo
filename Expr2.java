@@ -8,7 +8,7 @@ public class Expr2 extends NonTerminal {
 	private String thisString;
 
 	public Expr2(String pattern) {
-		super("expr",pattern);
+		super("expr2",pattern);
 	}
 
 	public void interpret() throws Exception {
