@@ -1,6 +1,9 @@
 import java.io.*;
 
 public class Driver {
+	public static final boolean SHOW_TREE = true;
+	public static PrintWriter pw;
+
 	public static void main(String[] args) {
 		try {
 			BufferedReader br = new BufferedReader(
@@ -19,9 +22,11 @@ public class Driver {
 
 			Interpreter interpreter 
 				= new Interpreter(new ConcreteTokenizer()
-									,ConcreteNonTerminalFactory.instance(),
-									code,"Weeaboo.txt",false);
+									,ConcreteNonTerminalFactory.instance(),code
+									,"Weeaboo.txt",false);
+			pw = new PrintWriter(new FileWriter(new File("ParseTree.txt")));
 			interpreter.interpret();
+			pw.close();
 		} catch(Exception e) {
 			// if( e.getMessage() != null) {
 			// 	System.out.println(e.getMessage());

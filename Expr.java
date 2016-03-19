@@ -12,25 +12,33 @@ public class Expr extends NonTerminal {
 	}
 
 	public void interpret() throws Exception {
+		printBranch();
 		switch(getProdString()) {
 			case "expr + expr2":
 				nonter1 = (NonTerminal)getComponent("expr");
+				propagate(nonter1);
 				nonter1.interpret();
+				printIndent("+");
 				nonter2 = (NonTerminal)getComponent("expr2");
+				propagate(nonter2);
 				nonter2.interpret();
 				operator = "+";
 				put("lineNo",nonter1.getAsInt("lineNo"));
 				break;
 			case "expr - expr2":
 				nonter1 = (NonTerminal)getComponent("expr");
+				propagate(nonter1);
 				nonter1.interpret();
+				printIndent("-");
 				nonter2 = (NonTerminal)getComponent("expr2");
+				propagate(nonter2);
 				nonter2.interpret();
 				operator = "-";
 				put("lineNo",nonter1.getAsInt("lineNo"));
 				break;
 			case "expr2":
 				nonter1 = (NonTerminal)getComponent("expr2");
+				propagate(nonter1);
 				nonter1.interpret();
 				operator = "";
 				put("lineNo",nonter1.getAsInt("lineNo"));
